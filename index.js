@@ -17,7 +17,7 @@ client.on("messageCreate", message => {
   if(message.content ===  "Hello"){
     message.channel.send("Hi!")
   }
-  if(message.content === "embed") {
+  else if(message.content === "embed") {
     let embed = new Discord.EmbedBuilder()
     .setTitle("This is your embed title")
     .setDescription("This is your embed description")
