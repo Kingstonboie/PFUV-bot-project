@@ -17,6 +17,13 @@ client.on("messageCreate", message => {
   if(message.content ===  "Hello"){
     message.channel.send("Hi!")
   }
+  if(message.content === "embed") {
+    let embed = new Discord.EmbedBuilder()
+    .setTitle("This is your embed title")
+    .setDescription("This is your embed description")
+    .setFooter({text: "This is your embed footer"})
+    .setColor("#51C6A5")
+  }
 })
 
 client.login(process.env.token);
