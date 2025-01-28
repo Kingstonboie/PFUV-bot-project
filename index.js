@@ -11,13 +11,27 @@ app.get("/", (req, res) => {
 })
 
 const Discord = require("discord.js");
-const client = new Discord.Client({intents: ["Guilds", "GuildMessages", "MessageContent"]});
+const client = new Discord.Client({intents: ["Guilds", "GuildMessages", "MessageContent"], allowedMentions: ["users"]});
+const fs = require("fs");
+const prefix = "/"
+client.commands = new Discord.Collection();
+const commands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"))
+for(file of commands){
+  const commandName = file.split(".")[0]
+  const command = require(`./Commands/${commandName}`)
+  client.commands.set(commandName, command)
+}
 
 client.on("messageCreate", message => {
-  if(message.content ===  "Hello"){
-    message.channel.send("Hi!")
+  if(message.content.startsWith(prefix)){
+    const args = messsage.content.slice(prefix.length).trim().split(/ +/g)
+    const commmandName = args.shift()
+    const command = client.commands.get(commandName)
+    if(!command) return message.channel.send({content: "That command doesn't exist!"})
+    command.run(client, message, args)
   }
-  else if(message.content === "embed") {
+})
+  if(message.content === "embed") {
     let embed = new Discord.EmbedBuilder()
     .setTitle("This is your embed title")
     .setDescription("This is your embed description")
