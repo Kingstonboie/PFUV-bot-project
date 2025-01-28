@@ -23,6 +23,8 @@ client.on("messageCreate", message => {
     .setDescription("This is your embed description")
     .setFooter({text: "This is your embed footer"})
     .setColor("#51C6A5")
+
+    message.channel.send({embeds:[embed]})
   }
 })
 
