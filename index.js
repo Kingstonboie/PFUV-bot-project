@@ -48,7 +48,7 @@ client.login(process.env.token);
 client.on("messageCreate", message => {
   if(message.content.startsWith(prefix)){
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
-    const commmandName = args.shift()
+    const commandName = args.shift()
     const command = client.commands.get(commandName)
     if(!command) return message.channel.send({content: "That command doesn't exist!"})
     command.run(client, message, args)
