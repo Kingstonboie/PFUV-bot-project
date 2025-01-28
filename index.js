@@ -21,16 +21,38 @@ for(file of commands){
   const command = require(`./Commands/${commandName}`)
   client.commands.set(commandName, command)
 }
-
+/*
 client.on("messageCreate", message => {
   if(message.content.startsWith(prefix)){
-    const args = messsage.content.slice(prefix.length).trim().split(/ +/g)
+    const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const commmandName = args.shift()
     const command = client.commands.get(commandName)
     if(!command) return message.channel.send({content: "That command doesn't exist!"})
     command.run(client, message, args)
   }
 })
+  if(message.content === "embed") {
+    let embed = new Discord.EmbedBuilder()
+    .setTitle("This is your embed title")
+    .setDescription("This is your embed description")
+    .setFooter({text: "This is your embed footer"})
+    .setColor("#51C6A5")
+
+    message.channel.send({embeds:[embed]})
+  }
+}
+
+
+client.login(process.env.token);
+*/
+client.on("messageCreate", message => {
+  if(message.content.startsWith(prefix)){
+    const args = message.content.slice(prefix.length).trim().split(/ +/g)
+    const commmandName = args.shift()
+    const command = client.commands.get(commandName)
+    if(!command) return message.channel.send({content: "That command doesn't exist!"})
+    command.run(client, message, args)
+  }
   if(message.content === "embed") {
     let embed = new Discord.EmbedBuilder()
     .setTitle("This is your embed title")
