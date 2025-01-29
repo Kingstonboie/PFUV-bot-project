@@ -7,13 +7,13 @@ app.listen(3000, () => {
 })
 
 app.get("/", (req, res) => {
-  res.send("Hello world! ");
+  res.send("Hello world!");
 })
 
 const Discord = require("discord.js");
 const client = new Discord.Client({intents: ["Guilds", "GuildMessages", "MessageContent"], allowedMentions: ["users"]});
 const fs = require("fs");
-const prefix = "?"
+const prefix = "?";
 client.commands = new Discord.Collection();
 const commands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"))
 for(file of commands){
