@@ -4,14 +4,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."  },
+    "start": "node ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^18.0.6",
     "discord.js": "^14.14.1",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "node": "^16.20.2"
